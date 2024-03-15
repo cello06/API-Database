@@ -6,17 +6,19 @@ import org.apache.logging.log4j.Logger;
 import java.io.InputStream;
 import java.util.Properties;
 
+
 public class ConfigManager {
     private static final Logger LOGGER = LogManager.getLogger(ConfigManager.class);
     private static final Properties PROPERTIES = new Properties();
 
+
     static {
         try(InputStream inputStream = ConfigManager.class.getClassLoader()
-                .getResourceAsStream("application.properties")) {
+                .getResourceAsStream("application.properties")){
             PROPERTIES.load(inputStream);
-            LOGGER.info("Application file is loaded!");
+            LOGGER.info("Application properties file loaded successfully");
         }catch (Exception e){
-            LOGGER.error("Application file is not loaded!");
+            LOGGER.error("Application properties file is not loaded");
         }
     }
 
